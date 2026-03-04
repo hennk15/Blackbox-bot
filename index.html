@@ -1603,6 +1603,16 @@ function removeTyping() {
 let lastUserQ = '';
 let lastBotTopic = '';
 
+function askSuggestion(btn) {
+  document.getElementById('chat-input').value = btn.textContent.replace('?','').trim();
+  sendChat();
+}
+
+function sendSuggestion(text) {
+  document.getElementById('chat-input').value = text;
+  sendChat();
+}
+
 async function sendChat() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
@@ -2058,12 +2068,12 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <div id="cp-suggestions">
-    <button class="cp-sugg" onclick="askSuggestion(this)">Cheap options to buy?</button>
-    <button class="cp-sugg" onclick="askSuggestion(this)">Low cap stocks?</button>
-    <button class="cp-sugg" onclick="askSuggestion(this)">Best time to scan?</button>
-    <button class="cp-sugg" onclick="askSuggestion(this)">Call vs put</button>
-    <button class="cp-sugg" onclick="askSuggestion(this)">When to sell?</button>
-    <button class="cp-sugg" onclick="askSuggestion(this)">Options greeks</button>
+    <button class="cp-sugg" onclick="sendSuggestion('what cheap options have good buying opportunity')">Cheap options?</button>
+    <button class="cp-sugg" onclick="sendSuggestion('what low cap stocks should I watch')">Low cap stocks</button>
+    <button class="cp-sugg" onclick="sendSuggestion('best time to scan')">Best time to scan</button>
+    <button class="cp-sugg" onclick="sendSuggestion('call vs put explained')">Call vs put</button>
+    <button class="cp-sugg" onclick="sendSuggestion('when should I sell my option')">When to sell</button>
+    <button class="cp-sugg" onclick="sendSuggestion('explain options greeks delta theta')">Options greeks</button>
   </div>
   <div class="cp-input-row">
     <input id="chat-input" class="cp-input" placeholder="Ask anything about options…" maxlength="400">
